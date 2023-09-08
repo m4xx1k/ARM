@@ -114,7 +114,7 @@ const ForgetPasswordPage = props => {
                           onBlur={validation.handleBlur}
                           value={validation.values.email || ""}
                           invalid={
-                            validation.touched.email && validation.errors.email ? true : false
+                            !!(validation.touched.email && validation.errors.email)
                           }
                         />
                         {validation.touched.email && validation.errors.email ? (
@@ -126,6 +126,15 @@ const ForgetPasswordPage = props => {
                         <button className="btn btn-success w-100" type="submit">Надіслати</button>
                       </div>
                     </Form>
+
+                  </div>
+                  <div className="mt-1 text-center">
+                    <p className="mb-0">
+                      <Link  to={'/faq'} target={'_blank'} rel={'noopener noreferrer'}
+                         className="fw-semibold text-primary text-decoration-underline">
+                        Потрібна допомога у відновленні
+                      </Link>
+                    </p>
                   </div>
                 </CardBody>
               </Card>

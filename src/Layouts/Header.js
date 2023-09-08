@@ -54,7 +54,7 @@ const Header = ({onChangeLayoutMode, layoutModeType, headerClass}) => {
                                 onChangeLayoutMode={onChangeLayoutMode}
                             />
                             <div className="ms-1 header-item d-sm-flex">
-                                <Link to={'/faq'}
+                                <Link target={'_blank'} rel={'noopener noreferrer'} to={'/faq'}
                                     className="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
                                     <i className="ri-question-fill fs-22"></i>
                                 </Link>

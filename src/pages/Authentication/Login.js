@@ -178,7 +178,7 @@ const Login = (props) => {
                                         </div>
                                         <div className="mt-1 text-center">
                                             <p className="mb-0">
-                                                <Link to="/faq"
+                                                <Link to="/faq"  target={'_blank'} rel={'noopener noreferrer'}
                                                       className="fw-semibold text-primary text-decoration-underline">
                                                     Я не маю акаунту. Як отримати доступ?
                                                 </Link>

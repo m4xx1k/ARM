@@ -24,7 +24,7 @@ const ModalEula = () => {
             } catch (e) {
                 console.log(e)
             }
-            setTimeout(() => setShowCloseButton(true), 10000)
+            setTimeout(() => setShowCloseButton(true), 5000)
         }
         getData()
     }, [])
