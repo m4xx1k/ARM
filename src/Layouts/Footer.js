@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container, Row } from 'reactstrap';
+import {Col, Container, Row} from 'reactstrap';
 
 const Footer = () => {
     return (
@@ -8,11 +8,12 @@ const Footer = () => {
                 <Container fluid>
                     <Row>
                         <Col sm={6}>
-                            {new Date().getFullYear()} © Velzon.
+                            {new Date().getFullYear()} © <a style={{textDecoration: 'underline'}}
+                                                            href="https://t.me/maxx1k">m4xx1k</a>.
                         </Col>
                         <Col sm={6}>
                             <div className="text-sm-end d-none d-sm-block">
-                                Design & Develop by Themesbrand
+
                             </div>
                         </Col>
                     </Row>

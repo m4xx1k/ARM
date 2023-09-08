@@ -1,46 +1,33 @@
-import React, { useEffect } from "react";
-import { Navigate, Route } from "react-router-dom";
-import { setAuthorization } from "../helpers/api_helper";
-import { useDispatch } from "react-redux";
+import React, {useEffect, useState} from "react";
+import {Navigate, Route} from "react-router-dom";
+import {setAuthorization} from "../helpers/api_helper";
+import {useDispatch} from "react-redux";
 
-import { useProfile } from "../Components/Hooks/UserHooks";
+import {useProfile} from "../Components/Hooks/UserHooks";
 
-import { logoutUser } from "../slices/auth/login/thunk";
+import {logoutUser} from "../slices/auth/login/thunk";
+import {getLocalAccessToken, getLocalRefreshToken} from "../api/tokens";
 
-const AuthProtected = (props) =>{
-  const dispatch = useDispatch();
-  const { userProfile, loading, token } = useProfile();
-  
-  useEffect(() => {
-    if (userProfile && !loading && token) {
-      setAuthorization(token);
-    } else if (!userProfile && loading && !token) {
-      dispatch(logoutUser());
-    }
-  }, [token, userProfile, loading, dispatch]);
+const AuthProtected = (props) => {
+    console.log(1)
+    const dispatch = useDispatch();
+    const access = getLocalAccessToken()
+    const refresh = getLocalRefreshToken()
+    if (!access || !refresh) {
+        dispatch(logoutUser())
+        return <Navigate to={{pathname: "/login", state: {from: props.location}}}/>
+    } else return <>{props.children}</>;
+};
 
-  /*
-    Navigate is un-auth access protected routes via url
-    */
-
-  if (!userProfile && loading && !token) {
+const AccessRoute = ({component: Component, ...rest}) => {
     return (
-      <Navigate to={{ pathname: "/login", state: { from: props.location } }} />
+        <Route
+            {...rest}
+            render={props => {
+                return (<> <Component {...props} /> </>);
+            }}
+        />
     );
-  }
-
-  return <>{props.children}</>;
 };
 
-const AccessRoute = ({ component: Component, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={props => {
-        return (<> <Component {...props} /> </>);
-      }}
-    />
-  );
-};
-
-export { AuthProtected, AccessRoute };
+export {AuthProtected, AccessRoute};
