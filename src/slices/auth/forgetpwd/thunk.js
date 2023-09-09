@@ -1,16 +1,17 @@
 import {userForgetPasswordSuccess, userForgetPasswordError} from "./reducer"
 import {RECOVERY_EMAIL} from "../../../helpers/url_helper";
 import api from "../../../api";
+import axios from "axios";
 
 export const userForgetPassword = (email) => async (dispatch) => {
-    const error = () => dispatch(userForgetPasswordError("Сталась помилка :/ Перевірте правильність введеної пошти та спробуйте знову."))
+    const error = () => dispatch(userForgetPasswordError("Користувач з вказаною електронною поштою не існує"))
     try {
-
+        console.log({email, RECOVERY_EMAIL})
         const data = await api.post(RECOVERY_EMAIL, {email})
         console.log({data})
-        if (data.status === 200) {
+        if (data) {
             dispatch(userForgetPasswordSuccess(
-                "Вітаю! Новий пароль надісланий на вашу пошту."
+                "Пароль відправлено."
             ))
         } else error()
     } catch (forgetError) {

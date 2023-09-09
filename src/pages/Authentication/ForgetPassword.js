@@ -81,12 +81,16 @@ const ForgetPasswordPage = props => {
                     </lord-icon> */}
 
                   </div>
+                  {
+                    !forgetError && !forgetSuccessMsg ?
+                        <Alert className="border-0 alert-warning text-center mb-2 mx-2" role="alert">
+                          Ми надішлем новий пароль на вашу пошту!
+                        </Alert>
+                        : null
+                  }
 
-                    <Alert className="border-0 alert-warning text-center mb-2 mx-2" role="alert">
-                      Ми надішлем новий пароль на вашу пошту!
-                    </Alert>
                   <div className="p-2">
-                    {forgetError && forgetError ? (
+                    {forgetError ? (
                       <Alert color="danger" style={{ marginTop: "13px" }}>
                         {forgetError}
                       </Alert>

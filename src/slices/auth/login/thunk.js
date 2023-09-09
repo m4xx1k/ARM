@@ -15,6 +15,7 @@ export const loginUser = (user, history) => async (dispatch) => {
             window.localStorage.setItem('refreshToken', tokens.data.refresh)
             const user = await api.get(GET_USER)
             if (user.status === 200) {
+                console.log({user})
                 sessionStorage.setItem("authUser", JSON.stringify(user.data));
                 dispatch(loginSuccess(user.data))
                 history('/main')
