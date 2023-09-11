@@ -36,32 +36,15 @@ const ModalEula = () => {
                 eula ?
                     <React.Fragment>
                         <ModalBody>
-
                             {
-                                eula.map(item => (
-                                    <React.Fragment key={item.content}>
-                                        {item.is_worning_type ?
-                                            <Alert color="warning">
-                                                <h3><strong>{item.content}</strong></h3>
-                                                <ul>
+                                eula.map(section => (
+                                    <React.Fragment key={section.content}>
+                                             <div>
+                                                <h3><strong>{section.content}</strong></h3>
+                                                <ul className='eula-list'>
                                                     {
-                                                        item.infoitem_set.map(item => (
-                                                            <li style={{color: '#000', fontWeight: 500}}
-                                                                key={item.content} className={'m-1'}>
-                                                                <p>{item.content}</p>
-                                                            </li>
-                                                        ))
-
-                                                    }
-
-                                                </ul>
-                                            </Alert>
-                                            : <div>
-                                                <h3><strong>{item.content}</strong></h3>
-                                                <ul>
-                                                    {
-                                                        item.infoitem_set.map(item => (
-                                                            <li key={item.content} className={'m-1'}>
+                                                        section.infoitem_set.map(item => (
+                                                            <li key={item.content} className={section.is_worning_type && 'li_warning'}>
                                                                 <p>{item.content}</p>
                                                             </li>
                                                         ))
@@ -70,7 +53,7 @@ const ModalEula = () => {
 
                                                 </ul>
                                             </div>
-                                        }
+                                        
                                     </React.Fragment>
 
                                 ))
