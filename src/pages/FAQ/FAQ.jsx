@@ -131,7 +131,7 @@ const FAQ = () => {
                 layoutModeType={layoutModeType}
                 onChangeLayoutMode={onChangeLayoutMode}/> */}
             <div className="page-content" style={{paddingTop:4}}>
-                <Container fluid>
+                <Container fluid style={{width:'80%', minWidth:'85vw'}}>
                     <Row>
                         <Col lg={12}>
 							{/* <Card className="rounded-0 bg-success-subtle mx-n4 mt-n4 border-top"> */}
@@ -144,7 +144,7 @@ const FAQ = () => {
                                                     <p className="fs-17 mt-3">
 														Деякі питання, які можуть виникнути на початку роботи з системою. Якщо ви
 														не знайшли відповіді або вам необхідна консультація - надішліть лист на
-														електронну пошту														
+														електронну пошту
 													</p>
                                                     <div className="hstack flex-wrap gap-2">
                                                         <button type="button" className="btn btn-primary btn-label rounded-pill"><i className="ri-mail-line label-icon align-middle rounded-pill fs-16 me-2"></i> Email Us</button>
@@ -152,8 +152,8 @@ const FAQ = () => {
                                                 </div>
                                             </Col>
                                         </Row>
-                                    </div>                                    
-                            </Card>                              
+                                    </div>
+                            </Card>
 								<Row className="justify-content-evenly mb-4">
                                 {
                                     faq && faq.map(section =>
